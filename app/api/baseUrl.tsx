@@ -1,4 +1,4 @@
-import Category from "../home/Category";
+import { gql, useMutation } from "@apollo/client";
 
 const endpoint =
   "https://api-ap-south-1.hygraph.com/v2/clwzxv6le02jd07w8i446tmar/master";
@@ -47,7 +47,7 @@ query GetExperts {
 const getExpertsByCategory = (category: any) => {
   const SEARCHBYCATEGORY_QUARY = `
     query GetExperts {
-      experts(where: { categoryS_some: { name: "${category}" } }) {
+      experts(where: { categoryS_some: { name: "${category}"} }) {
         id
         name
         email
@@ -66,10 +66,23 @@ const getExpertsByCategory = (category: any) => {
   return SEARCHBYCATEGORY_QUARY;
 };
 
+
+const CREATE_BOOKING = gql`
+mutation CreateBooking($data: BookingCreateInput!) {
+  createBooking(data: $data) {
+    id
+  }
+  publishManyBookings {
+    count
+  }
+}
+`;
+
 export {
   SLIDES_QUERY,
   CATEGORY_QUERY,
   endpoint,
   EXPERT_QUARY,
   getExpertsByCategory,
+  CREATE_BOOKING
 };

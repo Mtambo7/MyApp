@@ -97,7 +97,13 @@ const ConfirmPasswordScreen = () => {
               contentStyle={{ width: 250 }}
               onBlur={() => setFieldTouched("email")}
               mode="outlined"
-              outlineStyle={{ borderRadius: 10 }}
+              outlineStyle={[
+                { borderRadius: 10 },
+                {
+                  borderColor:
+                    touched.email && errors.email ? "red" : undefined,
+                },
+              ]}
               onChangeText={handleChange("email")}
               keyboardType="email-address"
             />
@@ -110,7 +116,15 @@ const ConfirmPasswordScreen = () => {
               contentStyle={{ width: 250 }}
               onBlur={() => setFieldTouched("confirmationCode")}
               mode="outlined"
-              outlineStyle={{ borderRadius: 10 }}
+              outlineStyle={[
+                { borderRadius: 10 },
+                {
+                  borderColor:
+                    touched.confirmationCode && errors.confirmationCode
+                      ? "red"
+                      : undefined,
+                },
+              ]}
               autoCorrect={false}
               onChangeText={handleChange("confirmationCode")}
             />

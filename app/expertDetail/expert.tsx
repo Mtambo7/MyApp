@@ -12,16 +12,14 @@ import React, { useState } from "react";
 import { router, useLocalSearchParams } from "expo-router";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { Icon, IconButton, MD2Colors, MD3Colors } from "react-native-paper";
-import Heading from "@/components/Heading";
-import BookingModal from "@/components/BookingModal";
+import BookingModalScreen from "@/components/BookingModal";
 
 const Expert = () => {
   const insets = useSafeAreaInsets();
   const [showModal, setShowModal] = useState(false);
 
-  const { name, image, contact, about, category, address, email } =
+  const { name, image, contact, about, category, address, email, id } =
     useLocalSearchParams();
-  console.log(category);
 
   return (
     <View style={[styles.container, { paddingTop: insets.top }]}>
@@ -52,7 +50,7 @@ const Expert = () => {
           </View>
         </View>
         <View style={{ borderWidth: 0.4 }}></View>
-        <View style={{ paddingTop: 10 }}>
+        <View style={{ paddingTop: 10, marginLeft: 10 }}>
           <Text style={styles.name}>About Me</Text>
           <Text>{about}</Text>
         </View>
@@ -87,7 +85,7 @@ const Expert = () => {
         </TouchableOpacity>
       </View>
       <Modal animationType="slide" visible={showModal}>
-        <BookingModal hideModal={() => setShowModal(false)} />
+        <BookingModalScreen id={id} hideModal={() => setShowModal(false)} />
       </Modal>
     </View>
   );

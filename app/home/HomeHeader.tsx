@@ -13,30 +13,16 @@ import {
   SafeAreaInsetsContext,
   useSafeAreaInsets,
 } from "react-native-safe-area-context";
+import useUserAttributes from "../api/authUrl";
 
 const HomeHeader = () => {
   const theme = useTheme();
-  const [email, setEmail] = useState("");
-  const [name, setName] = useState("");
   const [text, setText] = useState("");
+  const {name,email}= useUserAttributes()
   const insert = useSafeAreaInsets();
 
-  async function handleFetchUserAttributes() {
-    try {
-      const { email, name }: any = await fetchUserAttributes();
-      setEmail(email);
-      setName(name);
-    } catch (error) {
-      console.log(error);
-    }
-  }
-
-  useEffect(() => {
-    handleFetchUserAttributes();
-  }, []);
 
   const NAME = name.toLowerCase();
-
   return (
     <View
       style={{

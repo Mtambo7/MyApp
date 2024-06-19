@@ -106,7 +106,13 @@ const ResetPasswordScreen = () => {
               contentStyle={{ width: 250 }}
               onBlur={() => setFieldTouched("email")}
               mode="outlined"
-              outlineStyle={{ borderRadius: 10 }}
+              outlineStyle={[
+                { borderRadius: 10 },
+                {
+                  borderColor:
+                    touched.email && errors.email ? "red" : undefined,
+                },
+              ]}
               keyboardType="email-address"
               autoCapitalize="none"
               autoCorrect={false}
@@ -128,7 +134,15 @@ const ResetPasswordScreen = () => {
               contentStyle={{ width: 250 }}
               onBlur={() => setFieldTouched("confirmationCode")}
               mode="outlined"
-              outlineStyle={{ borderRadius: 10 }}
+              outlineStyle={[
+                { borderRadius: 10 },
+                {
+                  borderColor:
+                    touched.confirmationCode && errors.confirmationCode
+                      ? "red"
+                      : undefined,
+                },
+              ]}
               autoCorrect={false}
               onChangeText={handleChange("confirmationCode")}
               right={
@@ -150,7 +164,15 @@ const ResetPasswordScreen = () => {
               contentStyle={{ width: 250 }}
               onBlur={() => setFieldTouched("newPassword")}
               mode="outlined"
-              outlineStyle={{ borderRadius: 10 }}
+              outlineStyle={[
+                { borderRadius: 10 },
+                {
+                  borderColor:
+                    touched.newPassword && errors.newPassword
+                      ? "red"
+                      : undefined,
+                },
+              ]}
               autoCorrect={false}
               secureTextEntry={isPasswordSecure}
               onChangeText={handleChange("newPassword")}
@@ -178,7 +200,15 @@ const ResetPasswordScreen = () => {
               contentStyle={{ width: 250 }}
               onBlur={() => setFieldTouched("confirmPassword")}
               mode="outlined"
-              outlineStyle={{ borderRadius: 10 }}
+              outlineStyle={[
+                { borderRadius: 10 },
+                {
+                  borderColor:
+                    touched.confirmPassword && errors.confirmPassword
+                      ? "red"
+                      : undefined,
+                },
+              ]}
               autoCorrect={false}
               onChangeText={handleChange("confirmPassword")}
               secureTextEntry={isPasswordComfirmSecure}

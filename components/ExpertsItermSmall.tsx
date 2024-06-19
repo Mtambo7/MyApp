@@ -26,6 +26,7 @@ type Prop = {
   contact: string;
   address: string;
   email: string;
+  id: string
 };
 
 type Items = {
@@ -41,6 +42,7 @@ const ExpertsItermSmall = ({ exp }: Items) => {
         router.push({
           pathname: "../expertDetail/expert",
           params: {
+            id: exp.id,
             name: exp.name,
             image: exp.image[0]?.url,
             about: exp.about,

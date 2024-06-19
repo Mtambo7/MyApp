@@ -80,7 +80,13 @@ const ForgotPasswordScreen = () => {
               contentStyle={{ width: 250 }}
               onBlur={() => setFieldTouched("email")}
               mode="outlined"
-              outlineStyle={{ borderRadius: 10 }}
+              outlineStyle={[
+                { borderRadius: 10 },
+                {
+                  borderColor:
+                    touched.email && errors.email ? "red" : undefined,
+                },
+              ]}
               autoCorrect={false}
               autoCapitalize="none"
               onChangeText={handleChange("email")}

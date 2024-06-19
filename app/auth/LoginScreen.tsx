@@ -50,7 +50,6 @@ const LoginScreen = () => {
       setError(e.message);
     }
     setIsLoading(false);
-    5;
   };
 
   return (
@@ -87,7 +86,13 @@ const LoginScreen = () => {
               contentStyle={{ width: 250 }}
               onBlur={() => setFieldTouched("email")}
               mode="outlined"
-              outlineStyle={{ borderRadius: 10 }}
+              outlineStyle={[
+                { borderRadius: 10 },
+                {
+                  borderColor:
+                    touched.email && errors.email ? "red" : undefined,
+                },
+              ]}
               keyboardType="email-address"
               autoCapitalize="none"
               autoCorrect={false}
@@ -110,7 +115,13 @@ const LoginScreen = () => {
               contentStyle={{ width: 250 }}
               onBlur={() => setFieldTouched("password")}
               mode="outlined"
-              outlineStyle={{ borderRadius: 10 }}
+              outlineStyle={[
+                { borderRadius: 10 },
+                {
+                  borderColor:
+                    touched.password && errors.password ? "red" : undefined,
+                },
+              ]}
               autoCorrect={false}
               secureTextEntry={isPasswordSecure}
               right={

@@ -8,7 +8,6 @@ import { QueryClient, QueryClientProvider, useQuery } from "react-query";
 import { getExpertsByCategory, endpoint } from "../api/baseUrl";
 import axios from "axios";
 import ExpertsItermSmall from "@/components/ExpertsItermSmall";
-import { Item } from "react-native-paper/lib/typescript/components/Drawer/Drawer";
 
 const queryClient = new QueryClient();
 
@@ -28,23 +27,17 @@ const ExpertDetailsScreen = () => {
     data: searchByCategory,
     isLoading: isLoadingCategories,
     error: errorCategories,
-  } = useQuery(
-    ["searchByCategory", id],
-    async () => {
-      const query = getExpertsByCategory(id);
-      const response = await axios({
-        url: endpoint,
-        method: "POST",
-        data: {
-          query,
-        },
-      });
-      return response.data.data;
-    },
-    {
-      enabled: !!id,
-    }
-  );
+  } = useQuery(["searchByCategory", id], async () => {
+    const query = getExpertsByCategory(id);
+    const response = await axios({
+      url: endpoint,
+      method: "POST",
+      data: {
+        query,
+      },
+    });
+    return response.data.data;
+  });
 
   if (isLoadingCategories) {
     return (
@@ -61,6 +54,8 @@ const ExpertDetailsScreen = () => {
       </View>
     );
   }
+
+
 
   return (
     <View style={{ paddingTop: insets.top }}>

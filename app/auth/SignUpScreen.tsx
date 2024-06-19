@@ -108,7 +108,12 @@ const SignupScreen = () => {
               contentStyle={{ width: 250 }}
               onBlur={() => setFieldTouched("name")}
               mode="outlined"
-              outlineStyle={{ borderRadius: 10 }}
+              outlineStyle={[
+                { borderRadius: 10 },
+                {
+                  borderColor: touched.name && errors.name ? "red" : undefined,
+                },
+              ]}
               autoCorrect={false}
               right={
                 <TextInput.Icon
@@ -129,7 +134,13 @@ const SignupScreen = () => {
               contentStyle={{ width: 250 }}
               onBlur={() => setFieldTouched("email")}
               mode="outlined"
-              outlineStyle={{ borderRadius: 10 }}
+              outlineStyle={[
+                { borderRadius: 10 },
+                {
+                  borderColor:
+                    touched.email && errors.email ? "red" : undefined,
+                },
+              ]}
               keyboardType="email-address"
               autoCapitalize="none"
               autoCorrect={false}
@@ -152,7 +163,13 @@ const SignupScreen = () => {
               contentStyle={{ width: 250 }}
               onBlur={() => setFieldTouched("password")}
               mode="outlined"
-              outlineStyle={{ borderRadius: 10 }}
+              outlineStyle={[
+                { borderRadius: 10 },
+                {
+                  borderColor:
+                    touched.password && errors.password ? "red" : undefined,
+                },
+              ]}
               autoCorrect={false}
               secureTextEntry={isPasswordSecure}
               right={
@@ -180,7 +197,15 @@ const SignupScreen = () => {
               contentStyle={{ width: 250 }}
               onBlur={() => setFieldTouched("confirmPassword")}
               mode="outlined"
-              outlineStyle={{ borderRadius: 10 }}
+              outlineStyle={[
+                { borderRadius: 10 },
+                {
+                  borderColor:
+                    touched.confirmPassword && errors.confirmPassword
+                      ? "red"
+                      : undefined,
+                },
+              ]}
               autoCorrect={false}
               secureTextEntry={isPasswordComfirmSecure}
               right={
