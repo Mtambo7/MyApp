@@ -15,7 +15,7 @@ import { router, useLocalSearchParams } from "expo-router";
 import CalendarPicker from "react-native-calendar-picker";
 import { ThemedText } from "./ThemedText";
 import { CREATE_BOOKING, endpoint } from "@/app/api/baseUrl";
-import { gql, useMutation } from "@apollo/client";
+
 
 import useUserAttributes from "@/app/api/authUrl";
 import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
@@ -68,9 +68,12 @@ const BookingModal = ({ hideModal, id }: any) => {
       userName: name,
     },
   };
-  console.log(typeof variables.data.date);
-  console.log("variables:", variables);
+
   const handleSubmit = () => {
+    if (!selectedDate || !selectedTime) {
+      ToastAndroid.show("Select date and Time", ToastAndroid.LONG);
+      return;
+    }
     client
       .mutate({
         mutation: CREATE_BOOKING,
@@ -86,6 +89,8 @@ const BookingModal = ({ hideModal, id }: any) => {
           console.error("GraphQL Errors:", error.graphQLErrors);
         }
       });
+    ToastAndroid.show("Booking Created", ToastAndroid.LONG);
+    hideModal()
   };
 
   return (

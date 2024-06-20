@@ -39,6 +39,19 @@ export default function TabLayout() {
           ),
         }}
       />
+         <Tabs.Screen
+        name="myBooking"
+        options={{
+          title: "My Booking",
+          tabBarIcon: ({ color, focused }) => (
+            <TabBarIcon
+              name={focused ? "bookmark" : "bookmark-outline"}
+              color={color}
+            />
+          ),
+        }}
+      />
+      
       <Tabs.Screen
         name="account"
         options={{

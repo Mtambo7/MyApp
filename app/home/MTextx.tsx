@@ -64,6 +64,7 @@ function MTextxContent() {
   });
 
   const {
+    refetch,
     data: experts,
     isLoading: isLoadingExperts,
     error: errorExperts,

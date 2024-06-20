@@ -1,4 +1,5 @@
 import {
+  FlatList,
   Image,
   Pressable,
   ScrollView,
@@ -26,7 +27,7 @@ type Prop = {
   contact: string;
   address: string;
   email: string;
-  id: string
+  id: string;
 };
 
 type Items = {
@@ -47,7 +48,7 @@ const ExpertsItermSmall = ({ exp }: Items) => {
             image: exp.image[0]?.url,
             about: exp.about,
             contact: exp.contact,
-            category: exp.categoryS[0],
+            category: exp.categoryS[0].name || exp.categoryS[1].name,
             address: exp.address,
             email: exp.email,
           },
@@ -59,9 +60,10 @@ const ExpertsItermSmall = ({ exp }: Items) => {
         {exp.name}
       </ThemedText>
 
-      <ScrollView>
-        {exp.categoryS.map((item) => (
-          <View key={item.id}>
+      {
+        <FlatList
+          data={exp.categoryS}
+          renderItem={({ item }) => (
             <Text
               style={{
                 color: MD2Colors.blue900,
@@ -71,9 +73,11 @@ const ExpertsItermSmall = ({ exp }: Items) => {
             >
               {item.name}
             </Text>
-          </View>
-        ))}
-      </ScrollView>
+          )}
+          keyExtractor={(item) => item.id}
+        />
+      }
+      <Text>{}</Text>
       <View style={{ flexDirection: "row" }}>
         <Icon
           source="map-marker-outline"

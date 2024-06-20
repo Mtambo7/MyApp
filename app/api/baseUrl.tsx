@@ -66,17 +66,47 @@ const getExpertsByCategory = (category: any) => {
   return SEARCHBYCATEGORY_QUARY;
 };
 
-
 const CREATE_BOOKING = gql`
-mutation CreateBooking($data: BookingCreateInput!) {
-  createBooking(data: $data) {
-    id
+  mutation CreateBooking($data: BookingCreateInput!) {
+    createBooking(data: $data) {
+      id
+    }
+    publishManyBookings {
+      count
+    }
   }
-  publishManyBookings {
-    count
+`;
+
+const getBooking = (userEmail: string) => {
+  const BOOKING_QUARY = `
+ query getUserBookings {
+  bookings(orderBy: updatedAt_DESC, where: {userEmail: "${userEmail}"}) {
+    time
+    userEmail
+    userName
+    bookingStatus
+    date
+    id
+    expert {
+      id
+      image {
+        url
+      }
+      name
+      address
+      contact
+      email
+      about
+      categoryS {
+        name
+      }
+    }
   }
 }
-`;
+ 
+ `;
+  return BOOKING_QUARY;
+};
 
 export {
   SLIDES_QUERY,
@@ -84,5 +114,6 @@ export {
   endpoint,
   EXPERT_QUARY,
   getExpertsByCategory,
-  CREATE_BOOKING
+  CREATE_BOOKING,
+  getBooking,
 };

@@ -39,6 +39,7 @@ const Expert = () => {
         <View style={styles.content}>
           <Text style={styles.name}>{name}</Text>
           <Text style={styles.contact}>{contact}</Text>
+          <Text>{category}</Text>
           <Text>{email}</Text>
           <View style={{ flexDirection: "row" }}>
             <Icon
