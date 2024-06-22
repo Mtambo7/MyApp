@@ -10,7 +10,7 @@ import { useEffect } from "react";
 import "react-native-reanimated";
 import { Authenticator } from "@aws-amplify/ui-react-native";
 import { useColorScheme } from "@/hooks/useColorScheme";
-
+import { GestureHandlerRootView } from "react-native-gesture-handler";
 import {} from "@aws-amplify/ui-react-native";
 import { Provider } from "react-native-paper";
 
@@ -35,18 +35,20 @@ function RootLayout() {
 
   return (
     <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
+        <GestureHandlerRootView >
       <Provider>
-        <Authenticator.Provider>
-          <Stack screenOptions={{ headerShown: false }}>
-            <Stack.Screen name="WelcomeScreen" />
-            <Stack.Screen name="LoginScreen" />
-            <Stack.Screen name="SignUpScreen" />
-            <Stack.Screen name="ConfirmScreen" />
-            <Stack.Screen name="ForgotPasswordScreen" />
-            <Stack.Screen name="(tabs)" />
-          </Stack>
-        </Authenticator.Provider>
+          <Authenticator.Provider>
+            <Stack screenOptions={{ headerShown: false }}>
+              <Stack.Screen name="WelcomeScreen" />
+              <Stack.Screen name="LoginScreen" />
+              <Stack.Screen name="SignUpScreen" />
+              <Stack.Screen name="ConfirmScreen" />
+              <Stack.Screen name="ForgotPasswordScreen" />
+              <Stack.Screen name="(tabs)" />
+            </Stack>
+          </Authenticator.Provider>
       </Provider>
+        </GestureHandlerRootView>
     </ThemeProvider>
   );
 }

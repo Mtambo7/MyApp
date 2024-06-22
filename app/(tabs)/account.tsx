@@ -40,7 +40,7 @@ const details = () => {
     <View style={styles.container}>
       <View
         style={[
-          styles.iconContainer,
+          styles.iconContainer, 
           { backgroundColor: theme.colors.surface },
         ]}
       >
