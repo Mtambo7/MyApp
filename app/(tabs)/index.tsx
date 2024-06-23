@@ -2,14 +2,14 @@ import { ScrollView, StyleSheet, Text, View } from "react-native";
 import React from "react";
 
 import { StatusBar } from "expo-status-bar";
-import { Amplify } from "aws-amplify";
-import amplifyconfig from "@/src/amplifyconfiguration.json";
 import HomeHeader from "../home/HomeHeader";
 import MTextx from "../home/MTextx";
 import {
   SafeAreaProvider,
   useSafeAreaInsets,
-} from "react-native-safe-area-context";
+  } from "react-native-safe-area-context";
+  import { Amplify } from "aws-amplify";
+  import amplifyconfig from "@/src/amplifyconfiguration.json";
 import { useTheme } from "react-native-paper";
 
 Amplify.configure(amplifyconfig);

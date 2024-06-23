@@ -4,14 +4,15 @@ import { TabBarIcon } from "@/components/navigation/TabBarIcon";
 import { Colors } from "@/constants/Colors";
 import { useColorScheme } from "@/hooks/useColorScheme";
 
+
 import {
   useAuthenticator,
   withAuthenticator,
 } from "@aws-amplify/ui-react-native";
-import { useSafeAreaInsets } from "react-native-safe-area-context";
+
 
 export default function TabLayout() {
-  const insert = useSafeAreaInsets();
+
 
   const colorScheme = useColorScheme();
   const { authStatus } = useAuthenticator((context) => [context.authStatus]);

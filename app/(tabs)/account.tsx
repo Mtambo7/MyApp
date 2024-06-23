@@ -30,17 +30,15 @@ const details = () => {
   const { signOut } = useAuthenticator((context) => [context.authStatus]);
 
   const handleMessage = () => {
-    router.navigate("../chat");
+    router.push("../chat");
   };
-
-  console.log(email);
 
   const NAME = name.toLocaleLowerCase();
   return (
     <View style={styles.container}>
       <View
         style={[
-          styles.iconContainer, 
+          styles.iconContainer,
           { backgroundColor: theme.colors.surface },
         ]}
       >
@@ -156,7 +154,6 @@ const details = () => {
               {error && <Text style={{ color: "red" }}>{error}</Text>}
               <ActivityIndicator size={"large"} animating={isLoading} />
               <Button onPress={signOut}>
-                {" "}
                 {isLoading ? "Loading..." : "Yes"}
               </Button>
               <Button onPress={() => setVisible(false)}>No</Button>

@@ -18,9 +18,8 @@ import useUserAttributes from "../api/authUrl";
 const HomeHeader = () => {
   const theme = useTheme();
   const [text, setText] = useState("");
-  const {name,email}= useUserAttributes()
+  const { name, email } = useUserAttributes();
   const insert = useSafeAreaInsets();
-
 
   const NAME = name.toLowerCase();
   return (

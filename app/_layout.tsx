@@ -14,6 +14,7 @@ import { GestureHandlerRootView } from "react-native-gesture-handler";
 import {} from "@aws-amplify/ui-react-native";
 import { Provider } from "react-native-paper";
 
+
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
 
@@ -35,8 +36,8 @@ function RootLayout() {
 
   return (
     <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
-        <GestureHandlerRootView >
-      <Provider>
+      <GestureHandlerRootView>
+        <Provider>
           <Authenticator.Provider>
             <Stack screenOptions={{ headerShown: false }}>
               <Stack.Screen name="WelcomeScreen" />
@@ -45,10 +46,11 @@ function RootLayout() {
               <Stack.Screen name="ConfirmScreen" />
               <Stack.Screen name="ForgotPasswordScreen" />
               <Stack.Screen name="(tabs)" />
+              <Stack.Screen name="chat" />
             </Stack>
           </Authenticator.Provider>
-      </Provider>
-        </GestureHandlerRootView>
+        </Provider>
+      </GestureHandlerRootView>
     </ThemeProvider>
   );
 }
